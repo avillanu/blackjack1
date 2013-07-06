@@ -12,7 +12,6 @@ arr.each {
 		end
 }
 
-
 if ace = 1 && sum + 10 <= 21
 	sum = sum + 10
 end
@@ -69,8 +68,11 @@ action = gets.chomp
 		break
 	end
 end
-puts stay
 if stay == 1
+	if calculate(dealer) > calculate(hand)
+		puts 'Dealer is higher. Sorry, you lose.'
+		break
+	end
 	stay = 0
 	while calculate(dealer) < calculate(hand)
 		card = deck.pop
@@ -80,6 +82,10 @@ if stay == 1
 		puts calculate(dealer)
 		if calculate(dealer) > 21
 			puts 'Dealer busts! You win!'
+			break
+		end
+		if calculate(dealer) > calculate(hand)
+			puts 'Dealer is higher. Sorry, you lose.'
 			break
 		end
 	end
